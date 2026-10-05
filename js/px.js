@@ -209,11 +209,28 @@
     return e;
   }
   /* draw pixel text. o = { s: pixel size, c: colour, o: outline colour, sh: drop-shadow colour, a: 'l'|'c'|'r', g: [top, bottom] gradient colours }; returns the width */
+  const gcache = new Map();
+  /* one cached canvas per glyph (so changing numbers never allocate) */
+  function glyphCanvas(ch, o) {
+    const s = o.s || K, c = o.c || '#fff', oc = o.o || '', sh = o.sh || '', g = o.g ? o.g.join('/') : '', key = ch + '|' + s + '|' + c + '|' + oc + '|' + sh + '|' + g;
+    let e = gcache.get(key);
+    if (e) return e;
+    if (gcache.size > 600) gcache.clear();
+    const pad = s * 2, cv = document.createElement('canvas'), x2 = cv.getContext('2d'), gl = glyphs[ch] || glyphs['?'];
+    cv.width = 5 * s + pad * 2 + (sh ? s : 0); cv.height = 7 * s + pad * 2 + (sh ? s : 0);
+    const draw = (ox, oy, col, grad) => { for (let r = 0; r < 7; r++) for (let q = 0; q < 5; q++) if (gl[r][q] === '1') { x2.fillStyle = grad ? (r < 3 ? grad[0] : grad[1]) : col; x2.fillRect(pad + ox + q * s, pad + oy + r * s, s, s); } };
+    if (sh) draw(s, s, sh);
+    if (oc) for (const [dx, dy] of [[-1, 0], [1, 0], [0, -1], [0, 1], [-1, -1], [1, -1], [-1, 1], [1, 1]]) draw(dx * s, dy * s, oc);
+    draw(0, 0, c, o.g);
+    e = { cv, pad };
+    gcache.set(key, e);
+    return e;
+  }
   PX.text = function (ctx, str, x, y, o) {
-    o = o || {};
-    const e = entry(str, o), ox = o.a === 'c' ? -e.w / 2 : o.a === 'r' ? -e.w : 0;
-    ctx.drawImage(e.cv, Math.round(x + ox - e.pad), Math.round(y - e.pad));
-    return e.w;
+    o = o || {}; str = String(str).toUpperCase();
+    const s = o.s || K, w = PX.textW(str, s), x0 = Math.round(x + (o.a === 'c' ? -w / 2 : o.a === 'r' ? -w : 0));
+    for (let i = 0; i < str.length; i++) { if (str[i] === ' ') continue; const e = glyphCanvas(str[i], o); ctx.drawImage(e.cv, x0 + i * 6 * s - e.pad, Math.round(y) - e.pad); }
+    return w;
   };
   /* a fresh canvas holding pixel text (for DOM use) */
   PX.textImage = function (str, o) {

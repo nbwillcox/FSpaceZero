@@ -191,7 +191,9 @@
     }
     for (const q of R.racers) if (q.bumpCd > 0) q.bumpCd -= dt;
   }
-  R.update = function (dt, inp) {
+  R.inp = { steer: 0, accel: 0, brake: 0, boost: 0, slideL: 0, slideR: 0 };
+  R.update = function (dt, inp0) {
+    const inp = R.inp; inp.steer = +inp0.steer || 0; inp.accel = inp0.accel ? 1 : 0; inp.brake = inp0.brake ? 1 : 0; inp.boost = inp0.boost ? 1 : 0; inp.slideL = inp0.slideL ? 1 : 0; inp.slideR = inp0.slideR ? 1 : 0;
     R.events.length = 0;
     if (R.banner) { R.banner.t += dt; if (R.banner.t > R.banner.life) R.banner = null; }
     if (R.shake > 0) R.shake = Math.max(0, R.shake - 28 * dt);
