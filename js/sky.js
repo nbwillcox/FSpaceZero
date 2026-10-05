@@ -46,7 +46,7 @@
   WORLDS[1] = (p, rnd, hz) => {
     const pw = p.w;
     grad(p, [[0, '#0a1c4a'], [0.4, '#2a5aa0'], [0.75, '#8ac4ee'], [1, '#e8f6ff']]);
-    for (let b = 0; b < 3; b++) for (let x = 0; x < pw; x++) { const y = 22 + b * 9 + Math.sin(x * 0.012 + b * 1.7) * 9 + Math.sin(x * 0.031 + b) * 3; for (let q = 0; q < 6; q++) if (PX.dither(x, Math.floor(y) + q, 0.75 - q * 0.12)) p.set(x, Math.floor(y) + q, rgb(b === 1 ? '#9affd0' : '#6affea')); }
+    for (let b = 0; b < 3; b++) for (let x = 0; x < pw; x++) { const y = 22 + b * 9 + Math.sin(x / pw * 12.566 + b * 1.7) * 9 + Math.sin(x / pw * 37.7 + b) * 3; for (let q = 0; q < 6; q++) if (PX.dither(x, Math.floor(y) + q, 0.75 - q * 0.12)) p.set(x, Math.floor(y) + q, rgb(b === 1 ? '#9affd0' : '#6affea')); }
     stars(p, rnd, 60, 40, ['#ffffff', '#bfe6ff']); sphere(p, 780, 30, 14, ['#fff4ff', '#e8b8f0', '#a878d0', '#5a3a98', '#2a1a58'], 0.9);
     const a = prof(2, 5, 3, pw), b = prof(5, 9, 3, pw), ya = new Float32Array(pw), yb = new Float32Array(pw);
     for (let x = 0; x < pw; x++) { ya[x] = hz - 30 - a[x] * 34; yb[x] = hz - 12 - b[x] * 22; }

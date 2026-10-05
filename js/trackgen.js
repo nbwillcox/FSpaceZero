@@ -18,7 +18,7 @@
   }
   TG.WORLD = [
     { name: 'neon', fog: '#1a0a3a', road: '#2b2d4d', roadB: '#34375a', edge: '#6ad8ff', rail: '#ff3ad0', railB: '#7a1a78', dash: '#8ae8ff', void: '#05051a' },
-    { name: 'frost', fog: '#b8d4f4', road: '#cfe4fb', roadB: '#bdd6f3', edge: '#4a8aef', rail: '#5aa0ff', railB: '#2a5aaa', dash: '#7ab0f8', void: '#a8c8ee' },
+    { name: 'frost', fog: '#b8d4f4', road: '#4a6aa6', roadB: '#5878b6', edge: '#f4faff', rail: '#2a6aff', railB: '#14308a', dash: '#e8f4ff', void: '#a8c8ee' },
     { name: 'magma', fog: '#4a1a10', road: '#3b2c34', roadB: '#463640', edge: '#ff9a2a', rail: '#ff6a1a', railB: '#8a2a0a', dash: '#ffb040', void: '#120608' },
     { name: 'spore', fog: '#103a28', road: '#3a4a36', roadB: '#44563e', edge: '#9aff6a', rail: '#7aff6a', railB: '#2a7a2a', dash: '#c8ff9a', void: '#071a10' },
     { name: 'station', fog: '#0a1030', road: '#4a5272', roadB: '#545c7c', edge: '#ffd24a', rail: '#ffd24a', railB: '#161a30', dash: '#e8eeff', void: '#03050c' },
