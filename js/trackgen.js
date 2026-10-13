@@ -110,4 +110,13 @@
     for (let i = 0; i < u.length; i++) { const c = u[i]; if (c === road || c === roadB) { const h = (Math.imul(i, 2654435761) >>> 28); if (h === 0) u[i] = dk; else if (h === 1) u[i] = lt; } }
     return { tex: u, world: W };
   };
+  /* painting a track is the one multi-second stall (4 million texels): a track that was just raced (a retry, or the attract demo coming round again) is kept, the last two are */
+  const paintRaw = TG.paint, kept = [];
+  TG.paint = function (tr) {
+    let sum = 0; for (let i = 0; i < tr.N; i++) sum = (sum * 31 + Math.round(tr.x[i]) * 7 + Math.round(tr.y[i])) % 1000003;
+    const key = tr.world + ':' + tr.N + ':' + tr.w + ':' + tr.feats.length + ':' + sum, hit = kept.find((e) => e.key === key);
+    if (hit) return hit.val;
+    const val = paintRaw(tr); kept.unshift({ key, val }); if (kept.length > 2) kept.pop();
+    return val;
+  };
 })((window.SGS = window.SGS || {}));
