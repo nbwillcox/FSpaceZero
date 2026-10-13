@@ -19,6 +19,10 @@ Everything is generated in code: the track is a flat texture drawn through a per
 
 Menus work with the arrow keys and `Enter`, the mouse, or a gamepad.
 
+### On a phone or tablet
+
+Play in landscape. The ship accelerates by itself; hold the left stick left or right to steer, hold **BRAKE** to slow down, **BOOST** to burn energy for speed and the side-slide buttons to dodge. The pause button opens the menu. The on-screen controls appear on touch devices automatically; Settings has size, opacity and a left-handed layout. Use your browser's *Add to Home Screen* to install it as a full-screen app.
+
 ## Racing
 
 - **Grand Prix:** three cups (Meson, Quasar, Pulsar) of five races each, 20 racers on the grid, 3 laps per race. Finish inside the cut (top 10 / 8 / 6 on Novice / Standard / Expert) to advance. You get 3 machines per cup; points per race decide the cup standings.
