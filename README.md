@@ -23,6 +23,10 @@ Menus work with the arrow keys and `Enter`, the mouse, or a gamepad.
 
 Play in landscape. The ship accelerates by itself; hold the left stick left or right to steer, hold **BRAKE** to slow down, **BOOST** to burn energy for speed and the side-slide buttons to dodge. The pause button opens the menu. The on-screen controls appear on touch devices automatically; Settings has size, opacity and a left-handed layout. Use your browser's *Add to Home Screen* to install it as a full-screen app.
 
+### Controller
+
+Plug in a gamepad and it just works: the left stick or D-pad steers, **A / RT** accelerates, **LT** brakes, **X / B / Y** boosts, **LB / RB** side-slide, **Start** pauses. In menus the D-pad / left stick moves the highlight, **A** selects, **B** goes back and **Start** plays or resumes. **Settings -> Controller** has a dead-zone slider and lets you remap every button.
+
 ## Racing
 
 - **Grand Prix:** three cups (Meson, Quasar, Pulsar) of five races each, 20 racers on the grid, 3 laps per race. Finish inside the cut (top 10 / 8 / 6 on Novice / Standard / Expert) to advance. You get 3 machines per cup; points per race decide the cup standings.
